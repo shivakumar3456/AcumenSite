@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="{% static 'css/HomeCsss/nav.css' %}">
+	<link rel="stylesheet" href="{% static 'css/EventsCss/style.css' %}">
+
+  
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+<div><h1>Events!</h1></div>
+<div class="open-overlay">
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
+      </div>
+    <div class="overlay-navigation">
+      <nav role="navigation">
+           <ul>
+          <li><a class="h3" href="{% url 'home' %}" data-content="The beginning">Home</a></li>
+          <li><a class="h3" href="{% url 'events' %}" data-content="I got game">Events</a></li>
+          <li><a class="h3" href="{% url 'sponsers' %}" data-content="Only the finest">Sponsors</a></li>
+          <li><a class="h3" href="{% url 'team' %}" data-content="Don't hesitate">The Team</a></li>
+          <li><a class="h3" href="#" data-content="Memories!">Gallery</a></li>
+          {%if  user.is_authenticated %}
+            <li><a class="h3" href="{% url 'dashboard' %}" data-content="Curious?">Dashboard</a></li>
+             {% else %}
+             <li><a class="h3" href="{% url 'registration' %}" data-content="Curious?">Register/Sign in</a></li>
+            {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <main class="grid-container">
+	<div class="grid-item">
+		<div class="wrapper">
+			<div class="card-container">
+				<div class="flip-animation">
+					<!--Front of the card-->
+					<section class="item-card">
+						<div class="item-summary">
+							<h2 class="title">The Paper Presentation</h2>
+							<input style="display:none" id="paper1" name="paper1" value="eid1">
+
+							<p class="venue">R-107</p>
+							<address class="address">
+								<p class="street-address">Ramanujan Block</p>
+								<p class="street-address">Contact:</p>
+							</address>
+						</div>
+						<div class="image-wrapper">
+							<img class="featured-image" src="https://bit.ly/2PH10HN"  />
+						</div>
+						<div class="item-time-date">
+							<time class="date" datetime="2018-10-16">March 15, 2019</time>
+						</div>
+						<div class="item-buttons front-buttons">
+							<button class="btn-details grey">Details</button>
+
+							{% if 'eid1' in evreglist%}
+							<a class="btn-tickets blue disabled" href="#" id="no">Registered</a>
+							{% else %}
+								<a class="btn-tickets blue " href="#" id="clicked1">Register</a>
+							{%endif%}
+						</div>
+					</section>
+					<!--Back of the card-->
+					<section class="item-card-details">
+						<div class="bio-block">
+							<h2 class="bio-band">The Paper Presentation</h2>
+							<h3 class="bio-title">Info</h3>
+						</div>
+						<div class="scroll-block">
+							<p class="bio-text">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. 	Aenean venenatis ex non risus vulputate semper. Sed
+								laoreet, nibh quis tincidunt blandit, urna lorem lobortis odio, quis luctus mauris orci ut nunc. Suspendisse
+								potenti. Nullam rhoncus mi quis mauris blandit malesuada. Vivamus eget lacus sem. Integer metus leo,
+								pellentesque in feugiat vel, ornare ac ante. Sed sit amet tincidunt lacus, at condimentum elit. Vivamus ut
+								erat eu sem luctus bibendum in in purus. Etiam ornare lectus sed erat ornare, quis placerat libero dapibus.
+								Nullam nec quam eget arcu elementum vestibulum.
+							</p>
+						</div>
+						<div class="more-info">
+						<p>
+							<a class="info" href="#">The Paper Presentation Details</a>	
+						</p>
+						<p>
+							<a class="info"  href="../3dmap/3dmap.html?event=Paperp">Venue Details</a>
+						</p>
+					</div>
+					<div class="item-buttons back">
+						<button class="btn-details grey back-arrow" href="#"></button>
+						<a class="btn-tickets blue on-back"  href="#">Register</a>
+					</div>
+				</section>
+			 </div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-item">
+		<div class="wrapper">
+			<div class="card-container">
+				<div class="flip-animation">
+					<!--Front of the card-->
+					<section class="item-card">
+						<div class="item-summary">
+							<h2 class="title">The Poster Presentation</h2>
+							<input style="display:none" id="paper2" name="paper2" value="eid2">
+
+							<p class="venue">R-107</p>
+							<address class="address">
+								<p class="street-address">Ramanujan Block</p>
+								<p class="street-address">Contact:</p>
+							</address>
+						</div>
+						<div class="image-wrapper">
+							<img class="featured-image" src="https://bit.ly/2PH10HN"  />
+						</div>
+						<div class="item-time-date">
+							<time class="date" datetime="2018-10-16">March 15, 2019</time>
+						</div>
+						<div class="item-buttons front-buttons">
+							<button class="btn-details grey">Details</button>
+
+							{% if 'eid2' in evreglist%}
+							<a class="btn-tickets blue disabled" href="#" id="no">Registered</a>
+							{% else %}
+								<a class="btn-tickets blue " href="#" id="clicked2">Register</a>
+							{%endif%}
+						</div>
+					</section>
+					<!--Back of the card-->
+					<section class="item-card-details">
+						<div class="bio-block">
+							<h2 class="bio-band">The poster Presentation</h2>
+							<h3 class="bio-title">Info</h3>
+						</div>
+						<div class="scroll-block">
+							<p class="bio-text">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. 	Aenean venenatis ex non risus vulputate semper. Sed
+								laoreet, nibh quis tincidunt blandit, urna lorem lobortis odio, quis luctus mauris orci ut nunc. Suspendisse
+								potenti. Nullam rhoncus mi quis mauris blandit malesuada. Vivamus eget lacus sem. Integer metus leo,
+								pellentesque in feugiat vel, ornare ac ante. Sed sit amet tincidunt lacus, at condimentum elit. Vivamus ut
+								erat eu sem luctus bibendum in in purus. Etiam ornare lectus sed erat ornare, quis placerat libero dapibus.
+								Nullam nec quam eget arcu elementum vestibulum.
+							</p>
+						</div>
+						<div class="more-info">
+						<p>
+							<a class="info" href="#">The Poster Presentation Details</a>
+						</p>
+						<p>
+							<a class="info"  href="../3dmap/3dmap.html?event=Paperp">Venue Details</a>
+						</p>
+					</div>
+					<div class="item-buttons back">
+						<button class="btn-details grey back-arrow" href="#"></button>
+						<a class="btn-tickets blue on-back"  href="#">Register</a>
+					</div>
+				</section>
+			 </div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-item">
+		<div class="wrapper">
+			<div class="card-container">
+				<div class="flip-animation">
+					<!--Front of the card-->
+					<section class="item-card">
+						<div class="item-summary">
+							<h2 class="title">The thambola</h2>
+							<input style="display:none" id="paper3" name="paper3" value="eid3">
+
+							<p class="venue">R-107</p>
+							<address class="address">
+								<p class="street-address">Ramanujan Block</p>
+								<p class="street-address">Contact:</p>
+							</address>
+						</div>
+						<div class="image-wrapper">
+							<img class="featured-image" src="https://bit.ly/2PH10HN"  />
+						</div>
+						<div class="item-time-date">
+							<time class="date" datetime="2018-10-16">March 15, 2019</time>
+						</div>
+						<div class="item-buttons front-buttons">
+							<button class="btn-details grey">Details</button>
+
+							{% if 'eid3' in evreglist%}
+							<a class="btn-tickets blue disabled" href="#" id="no">Registered</a>
+							{% else %}
+								<a class="btn-tickets blue " href="#" id="clicked3">Register</a>
+							{%endif%}
+						</div>
+					</section>
+					<!--Back of the card-->
+					<section class="item-card-details">
+						<div class="bio-block">
+							<h2 class="bio-band">The thambola</h2>
+							<h3 class="bio-title">Info</h3>
+						</div>
+						<div class="scroll-block">
+							<p class="bio-text">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. 	Aenean venenatis ex non risus vulputate semper. Sed
+								laoreet, nibh quis tincidunt blandit, urna lorem lobortis odio, quis luctus mauris orci ut nunc. Suspendisse
+								potenti. Nullam rhoncus mi quis mauris blandit malesuada. Vivamus eget lacus sem. Integer metus leo,
+								pellentesque in feugiat vel, ornare ac ante. Sed sit amet tincidunt lacus, at condimentum elit. Vivamus ut
+								erat eu sem luctus bibendum in in purus. Etiam ornare lectus sed erat ornare, quis placerat libero dapibus.
+								Nullam nec quam eget arcu elementum vestibulum.
+							</p>
+						</div>
+						<div class="more-info">
+						<p>
+							<a class="info" href="#">The digital thambola Details</a>
+						</p>
+						<p>
+							<a class="info"  href="../3dmap/3dmap.html?event=Paperp">Venue Details</a>
+						</p>
+					</div>
+					<div class="item-buttons back">
+						<button class="btn-details grey back-arrow" href="#"></button>
+						<a class="btn-tickets blue on-back"  href="#">Register</a>
+					</div>
+				</section>
+			 </div>
+			</div>
+		</div>
+	</div>
+
+</main>
+
+<canvas id="canvas"></canvas>
+  
+  
+
+    <script  src="{% static 'js/EventJs/index.js' %}"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
+<script  src="{% static 'js/HomeJs/index.js' %}"></script>
+
+<script type="text/javascript">
+	$('#clicked1').click(function() {
+    var paper = $('#paper1').val();
+    sendurlfun(paper)
+
+});
+$('#clicked2').click(function() {
+    var paper = $('#paper2').val();
+    sendurlfun(paper)
+
+});
+$('#clicked3').click(function() {
+    var paper = $('#paper3').val();
+    sendurlfun(paper)
+
+});
+function sendurlfun(paper){
+ var url = 'http://localhost:8000/eventreg/';
+    var data = {'event': paper};
+    var success = function () {
+        console.log('yay');
+       window.location.reload();
+
+    };
+    alert("you want to register" )
+    $.ajax({
+         type: "GET",
+         url: url,
+         data: data,
+         success: success
+    });
+}
+</script>
+
+
+</body>
+
+</html>
